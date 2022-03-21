@@ -174,6 +174,7 @@ void listenFCM() async {
   
 
   redirectLoginPage() {
+    print('_checkValue');
     print(_checkValue);
     if (_checkValue == true) {
       Navigator.of(context).pushNamed(TransactionScreen.routeName);
@@ -212,10 +213,7 @@ void listenFCM() async {
                         left: MediaQuery.of(context).size.width / 3),
                     child: Column(
                       children: [
-                        Image.asset(
-                          'assets/images/logo.png',
-                          height: 20,
-                        ),
+                      
                         Text(
                           "Rani",
                           style: TextStyle(

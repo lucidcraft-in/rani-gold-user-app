@@ -32,7 +32,7 @@ class UserModel {
         address = data['address'],
         place = data['place'],
         balance = data['balance'],
-         token = data['token'];
+        token = data['token'];
 
   Map<String, dynamic> toMap() {
     return {
@@ -43,7 +43,7 @@ class UserModel {
       'address': address,
       'place': place,
       'balance': balance,
-       'token': token,
+      'token': token,
     };
   }
 }
@@ -108,7 +108,7 @@ class User with ChangeNotifier {
     List userlist = [];
     try {
       querySnapshot = await collectionReference.orderBy('timestamp').get();
-      print("inside user read provider");
+
       if (querySnapshot.docs.isNotEmpty) {
         for (var doc in querySnapshot.docs.toList()) {
           Map a = {
@@ -118,9 +118,40 @@ class User with ChangeNotifier {
             "phoneNo": doc["phone_no"],
             "address": doc["address"],
             "place": doc["place"],
-            "balance":doc['balance'],
+            "balance": doc['balance'],
           };
           userlist.add(a);
+        }
+
+        print(userlist);
+
+        return userlist;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<List> readById(String userId) async {
+    QuerySnapshot querySnapshot;
+    List userlist = [];
+    try {
+      querySnapshot = await collectionReference.orderBy('timestamp').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        for (var doc in querySnapshot.docs.toList()) {
+          if (userId == doc.id) {
+            Map a = {
+              "id": doc.id,
+              "name": doc['name'],
+              "custId": doc["cust_id"],
+              "phoneNo": doc["phone_no"],
+              "address": doc["address"],
+              "place": doc["place"],
+              "balance": doc['balance'],
+            };
+            userlist.add(a);
+          }
         }
 
         print(userlist);

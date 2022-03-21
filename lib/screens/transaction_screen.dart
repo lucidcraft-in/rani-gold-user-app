@@ -4,8 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './home_screen.dart';
 import './login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:intl/intl.dart';
 import '../widgets/transaction_list.dart';
+import '../providers/transaction.dart';
+import '../providers/user.dart';
+import './login_screen.dart';
 
 class TransactionScreen extends StatefulWidget {
   static const routeName = "/transaction-screen";
@@ -16,20 +19,54 @@ class TransactionScreen extends StatefulWidget {
 
 class _TransactionScreenState extends State<TransactionScreen> {
   var user;
+  bool _checkValue;
+  Transaction db;
+  User dbUser;
+  List transactionList = [];
+  List userList = [];
+  DateTime lastUpdate = DateTime.now();
+  double customerBalance = 0;
+  initialise() {
+    db = Transaction();
+    dbUser = User();
+    db.initiliase();
+    db.read(user['id']).then((value) => {
+          setState(() {
+            transactionList = value;
+          })
+        });
+
+    dbUser.initiliase();
+    dbUser.readById(user['id']).then((value) => {
+          setState(() {
+            userList = value;
+          })
+        });
+  }
 
   @override
   void didChangeDependencies() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
+    _checkValue = prefs.containsKey('user');
     setState(() {
       user = jsonDecode(prefs.getString('user'));
     });
 
     // user = prefs.containsKey('user');
+    await initialise();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (transactionList != null) {
+      lastUpdate = transactionList[0]['date'].toDate();
+    }
+
+    if (userList != null) {
+      customerBalance = userList[0]['balance'];
+    }
+
+ 
     // Clear shared preferance
     logout() async {
       SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -37,11 +74,12 @@ class _TransactionScreenState extends State<TransactionScreen> {
       for (String key in preferences.getKeys()) {
         preferences.remove(key);
       }
-      setState(() {});
+      setState(() {
+        Navigator.pushReplacement(context,
+            new MaterialPageRoute(builder: (context) => new HomeScreen()));
+      });
       // Navigate Page
       // Navigator.of(context).pushNamed(HomeScreen.routeName);
-      Navigator.pushReplacement(context,
-          new MaterialPageRoute(builder: (context) => new HomeScreen()));
     }
 
     return Scaffold(
@@ -166,7 +204,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                                       padding: EdgeInsets.only(left: 20),
                                       child: Text(
                                         user != null
-                                            ? " + ₹ ${user['balance'].toString()}"
+                                            ? " + ₹ ${customerBalance.toString()}"
                                             : " + ₹ 00",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -191,7 +229,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
                                   Container(
                                       padding: EdgeInsets.only(left: 20),
                                       child: Text(
-                                        "january, 27, 2022",
+                                        DateFormat.yMMMd()
+                                            .add_jm()
+                                            .format(lastUpdate)
+                                            .toString(),
                                         style: TextStyle(
                                             fontFamily: 'latto',
                                             fontSize: 11,

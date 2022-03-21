@@ -64,7 +64,13 @@ class MyApp extends StatelessWidget {
   
           // home: Splash2(),
           home: AnimatedSplashScreen(
-            splash:Image.asset('assets/images/splashs.png'),
+            splash:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+             Text(" Rani ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40),),
+             Text("Jewellery",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+          
+            ],),
             nextScreen: HomeScreen(),
             splashTransition: SplashTransition.scaleTransition,
             backgroundColor: Color(0xFFebbbc7),

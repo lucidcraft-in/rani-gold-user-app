@@ -69,7 +69,7 @@ class Transaction with ChangeNotifier {
       if (querySnapshot.docs.isNotEmpty) {
         print("inside read trasaction");
         for (var doc in querySnapshot.docs.toList()) {
-          print(doc['amount']);
+        
           if (id == doc['customerId']) {
             Map a = {
               "id": doc.id,

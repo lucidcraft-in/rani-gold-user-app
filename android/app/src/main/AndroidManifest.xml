@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lucidcraft.rani_gold">
    <application
-        android:label="rani_gold"
+        android:label="Rani Jewellery"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyAme8s7GgeV5Qm5ik6zgTEZVY0bRryhAeM"/>
