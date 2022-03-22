@@ -71,6 +71,55 @@ class _TransactionListState extends State<TransactionList> {
                                         )),
                       ),
                       Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.only(left: 30,right: 5,bottom: 5,top: 5),
+                                          width:
+                                              MediaQuery.of(context).size.width /
+                                                  1.0,
+                                          child: Row(
+                                            children: [
+                                              Text(" "),
+                                               Expanded(
+                                                  child: Text(
+                                              "Invoice No :",
+                                                style: TextStyle(
+                                                    fontFamily: 'latto',
+                                                    fontSize: 11,
+                                                    color: Colors.black87),
+                                              )),
+                                              Expanded(
+                                                  child: Text(
+                                              transactionList[index]['invoiceNo'] != null ?   transactionList[index]['invoiceNo']: "",
+                                                style: TextStyle(
+                                                    fontFamily: 'latto',
+                                                    fontSize: 13,
+                                                    color: Colors.black87),
+                                              )),
+                                              Expanded(
+                                                  child: Text(
+                                              "Category :",
+                                                style: TextStyle(
+                                                    fontFamily: 'latto',
+                                                    fontSize: 11,
+                                                    color: Colors.black87),
+                                              )),
+                                              Expanded(
+                                                  child: Text(
+                                               transactionList[index]['category'] != null ?  transactionList[index]['category']: "",
+                                                style: TextStyle(
+                                                    fontFamily: 'latto',
+                                                    fontSize: 13,
+                                                    color: Colors.black87),
+                                              )),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
@@ -110,7 +159,7 @@ class _TransactionListState extends State<TransactionList> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.all(4.0),
+                            padding: EdgeInsets.only(top: 4.0,left: 4.0,bottom: 4.0,right: 12.0),
                             width: 100.0,
                             child: Text(
                               " ₹ ${transactionList[index]['amount'].toString()}",

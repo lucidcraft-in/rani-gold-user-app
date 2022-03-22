@@ -79,6 +79,10 @@ class Transaction with ChangeNotifier {
               'amount': doc['amount'],
               'transactionType': doc['transactionType'],
               'note': doc['note'],
+              'invoiceNo': doc['invoiceNo'],
+              'category': doc['category'],
+              'discount': doc['discount'],
+              'staffId': doc['staffId'],
             };
             transactionList.add(a);
           }

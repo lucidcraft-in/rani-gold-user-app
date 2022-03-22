@@ -74,10 +74,14 @@ class _TransactionScreenState extends State<TransactionScreen> {
       for (String key in preferences.getKeys()) {
         preferences.remove(key);
       }
-      setState(() {
-        Navigator.pushReplacement(context,
-            new MaterialPageRoute(builder: (context) => new HomeScreen()));
+        setState(() {
+       
       });
+      Navigator.pop(context);
+       Navigator.pushReplacement(context,
+            new MaterialPageRoute(builder: (context) => new HomeScreen()));
+    
+      
       // Navigate Page
       // Navigator.of(context).pushNamed(HomeScreen.routeName);
     }
