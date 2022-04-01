@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 class SliderPage extends StatefulWidget {
   const SliderPage({Key key}) : super(key: key);
 
@@ -38,7 +38,7 @@ class _SliderPageState extends State<SliderPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Colors.white,
       body: StreamBuilder(
         stream: slides,
         builder: (context, AsyncSnapshot snap) {
@@ -74,15 +74,25 @@ class _SliderPageState extends State<SliderPage> {
 
   _buildStoryPage(Map data) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1),
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(
-            data['photo'],
-          ),
-        ),
-      ),
+    
+       child: CachedNetworkImage(
+                                          imageUrl: data['photo'],
+                                          placeholder: (context, url) =>
+                                              Image.asset(
+                                                  'assets/images/loadimage.gif',fit: BoxFit.cover, ),
+                                          errorWidget: (context, url, error) =>
+                                              Icon(Icons.error),
+                                        ),
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.circular(1),
+      //   image: DecorationImage(
+      //     fit: BoxFit.cover,
+      //     image:
+      //      NetworkImage(
+      //       data['photo'],
+      //     ),
+      //   ),
+      // ),
       // child: Center(
       //   child: Text(data['name']),
       // ),

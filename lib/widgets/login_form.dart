@@ -112,15 +112,15 @@ class _LoginFormState extends State<LoginForm> {
                 return null;
               },
               obscureText: false,
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
               decoration: InputDecoration(
                 hintText: "Customer Id",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: TextStyle(color: Colors.black),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orangeAccent),
+                  borderSide: BorderSide(color: Theme.of(context).accentColor),
                 ),
               ),
             ),
@@ -138,15 +138,15 @@ class _LoginFormState extends State<LoginForm> {
                 return null;
               },
               obscureText: false,
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: Colors.black, fontSize: 18),
               decoration: InputDecoration(
                 hintText: "Password",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: TextStyle(color: Colors.black),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white70),
+                  borderSide: BorderSide(color: Colors.black),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orangeAccent),
+                  borderSide: BorderSide(color: Theme.of(context).accentColor),
                 ),
               ),
             ),
@@ -156,7 +156,7 @@ class _LoginFormState extends State<LoginForm> {
             Material(
               elevation: 1.0,
               borderRadius: BorderRadius.circular(12.0),
-              color: Theme.of(context).accentColor,
+              color: Theme.of(context).primaryColor,
               child: MaterialButton(
                 minWidth: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),

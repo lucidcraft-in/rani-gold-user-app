@@ -35,7 +35,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Theme.of(context).primaryColor,
+        color: Colors.grey[100],
         child: Column(
           children: [
             Row(
@@ -148,7 +148,8 @@ class _HomeViewState extends State<HomeView> {
             ),
             // SizedBox(height: 40,),
             Container(
-              width: MediaQuery.of(context).size.width,
+            
+              width: MediaQuery.of(context).size.width-20,
               height: MediaQuery.of(context).size.height -
                   MediaQuery.of(context).padding.top -
                   kToolbarHeight -

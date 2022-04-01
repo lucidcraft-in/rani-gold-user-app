@@ -187,7 +187,7 @@ void listenFCM() async {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.white,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70.0),
           child: AppBar(
@@ -204,41 +204,14 @@ void listenFCM() async {
                   },
                 )
               ], // centerTitle: true,
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Colors.white,
               centerTitle: true,
-              title: Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width / 3),
-                    child: Column(
-                      children: [
-                      
-                        Text(
-                          "Rani",
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: 'Segan',
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Jewellery',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 11,
-                              fontFamily: 'Segan',
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              )
-              // Image.asset(
-              //   'assets/images/nav-icon2.png',
-              //   height: 28,
-              // ),
+              title: 
+              Image.asset(
+                'assets/images/appbar.png',
+                fit: BoxFit.cover
+                // height: 28,
+              ),
               // centerTitle: true,
               ),
         ),

@@ -14,13 +14,16 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColor,
+            iconTheme: IconThemeData(
+    color: Colors.black
+  ),
+          backgroundColor: Colors.white,
           elevation: 0,
           
         ),
         
         body: Container(
-          color: Theme.of(context).primaryColor,
+          color: Colors.white,
           child: Column(
             children: [
               Container(
@@ -30,31 +33,31 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: EdgeInsets.only(top: 5, left: 55, right: 55),
                       width: MediaQuery.of(context).size.width,
                       height: 130,
-                      color: Theme.of(context).primaryColor,
+                      color: Colors.white,
                       child: Column(
                         children: [
                          Container(
                                 
                                   padding: EdgeInsets.all(5),
-                                  // child: Image.asset('assets/images/logo.png',height: 42,),
+                                  child: Image.asset('assets/images/appbar.png',fit: BoxFit.cover,),
                                 ),
                              
-                                      Text(
-                                        "  Rani  ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 36,
-                                            color: Colors.white,
-                                            fontFamily: 'Segan'),
-                                      ),
-                                      Text(
-                                        "Jewellery",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15,
-                                            fontFamily: 'Segan',
-                                            color: Colors.white70),
-                                      )
+                                      // Text(
+                                      //   "  Rani  ",
+                                      //   style: TextStyle(
+                                      //       fontWeight: FontWeight.bold,
+                                      //       fontSize: 36,
+                                      //       color: Colors.white,
+                                      //       fontFamily: 'Segan'),
+                                      // ),
+                                      // Text(
+                                      //   "Jewellery",
+                                      //   style: TextStyle(
+                                      //       fontWeight: FontWeight.bold,
+                                      //       fontSize: 15,
+                                      //       fontFamily: 'Segan',
+                                      //       color: Colors.white70),
+                                      // )
                                    
                                   
                               
